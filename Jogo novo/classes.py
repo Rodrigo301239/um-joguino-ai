@@ -11,16 +11,70 @@ class Personagem:
         self.energia_maxima = 5
         self.mao_carta = []
     
-    def exibir(self):
-        return print(f"o personagem é {self.nome}")
+    def construtor_maocarta(self):
+        return f"{self.mao_carta}"
     
     def jogar_dados(self):
         self.sorteado = random.randint(1,6)
         self.exibir_dados()
+        
+        
         return self.sorteado
     
     def exibir_dados(self):
         return print (f"{self.nome} tirou {self.sorteado} nos dados")
+    
+class Partida ():
+    def __init__(self, jogador1: Personagem, jogador2: Personagem):
+        self.player1 = jogador1
+        self.player2 = jogador2
+        
+        
+    def exibir(self):
+        return print(f"jogador1 = {self.player1.nome}\njogador2 = {self.player2.nome}")
+    
+    
+    def sorteio_cartas(self):
+    
+        for i in range(8):
+            self.random = random.randint(1,5)
+            
+                
+            if random == 1:
+                carta1 = CartaAumento()
+                self.player1.mao_carta.append[carta1]
+                
+                    
+            elif random == 2:
+                 carta2 = CartaAtordoamento()
+                 self.player1.mao_carta.append[carta2]
+                
+            elif random == 3:
+                 carta3 = CartaCura()
+                 self.player1.mao_carta.append[carta3]
+                
+            elif random == 4:
+                carta4 = CartaDano()
+                self.player1.mao_carta.append[carta4]
+                
+            elif random == 5:
+                 carta5 = CartaRoubo()
+                 self.player1.mao_carta.append[carta5]
+                 
+        
+                
+                
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    
+    
     
 class Carta:
     
@@ -34,34 +88,40 @@ class Carta:
     
 class CartaAumento (Carta):
     
-    def __init__(self,nome: str ,energia_gasta: int, descricao: str,qual_aumento,aumento):
+    def __init__(self,nome: str ,energia_gasta: int, descricao: str):
         super().__init__(energia_gasta,nome,descricao)
-        self.qual_aumento = qual_aumento
-        self.aumento = aumento
+        self.qual_aumento = random.randint(1,4)
+        
             
-            
-    
     def usar(self, beneficiario: Personagem):
         
         #vida maxima
         if self.qual_aumento == 1:
             beneficiario.vida_maxima += 20
             beneficiario.energia -= 1
+            self.nome = "Carta Aumento Maximo"
+            self.descricao = "Aumenta a quantidade de vida maxima"
         
         #aumento dano
         elif self.qual_aumento == 2:
             beneficiario.pontos_ataque += 15
             beneficiario.energia += 1
+            self.nome = "Anjo Da Destruicao"
+            self.descricao = "aumenta o seu dano de ataque"
         
         #aumento energia max
         elif self.qual_aumento == 3:
             beneficiario.energia_maxima += 3
-            beneficiario.energia -= 1     
+            beneficiario.energia -= 1
+            self.nome = "MAAAAAAAAAX EEEENERGY"
+            self.descricao = "aumenta a sua energia maxima"     
         
         #aumento defesa
         elif self.qual_aumento == 4:
             beneficiario.pontos_defesa += 20
             beneficiario.energia -= 1
+            self.nome = "Escudo Dos Deuses"
+            self.descricao = "Aumenta a sua defesa"
     
 
 class CartaRoubo (Carta):
@@ -103,6 +163,13 @@ class CartaDano (Carta):
             vitima.pontos_defesa -= causador.pontos_ataque
             
         causador.energia -= 1
+    
+class CartaCura(Carta):
+    def __init__(self, nome: str, energia_gasta: int, descricao: str):
+        super().__init__(nome,energia_gasta,descricao)
+        
+    def usar (self, beneficiario: Personagem):
+        beneficiario.vida_atual += beneficiario.vida_maxima * 0.20
          
         
 
