@@ -6,7 +6,9 @@ def jogar(pessoa1,pessoa2):
     Partida = classes.Partida(pessoa1,pessoa2)
     exibir = Partida.exibir()
     sorteio1 = Partida.sorteio_cartas()
-    #sorteio2 = Partida.sorteio_cartas(segundo)
+    #exibir1 = Partida.exibir_mao()
+    sorteio2 = Partida.sorteio_cartas()
+    exibir2 = Partida.exibir_mao()
     #mao_carta1 = classes.Personagem.construtor_maocarta()
     
 
@@ -31,8 +33,8 @@ if __name__ == "__main__":
             começar = jogar(jogador1,jogador2)
             break
         elif sorte2 > sorte1:
-            começar = jogar(jogador2,jogador1)
             print ("\nO player 2 ira comecar a partida")
+            começar = jogar(jogador2,jogador1)
             break
         else:
             print ("Empate, jogando dados novamente!\n")
