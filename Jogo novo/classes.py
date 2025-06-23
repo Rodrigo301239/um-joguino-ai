@@ -24,6 +24,8 @@ class Personagem:
     def exibir_dados(self):
         return print (f"{self.nome} tirou {self.sorteado} nos dados")
     
+    
+    
 class Partida ():
     def __init__(self, jogador1: Personagem, jogador2: Personagem):
         self.player1 = jogador1
@@ -34,65 +36,87 @@ class Partida ():
         return print(f"jogador1 = {self.player1.nome}\njogador2 = {self.player2.nome}")
     
     
-    def sorteio_cartas(self):
+    def sorteio_cartas(self, x = None):
 
-        for i in range(4):
-            numero_sorteado = random.randint(1,5)
-            
-
-            if numero_sorteado == 1:
-                carta1 = CartaAumento("Aumento", 2, "Aumenta algum atributo aleatório")
-                self.player1.mao_carta.append(carta1)
+        if x == None:
+            for i in range(4):
+                numero_sorteado = random.randint(1,5)
                 
+
+                if numero_sorteado == 1:
+                    carta1 = CartaAumento("Aumento", 2, "Aumenta algum atributo aleatório")
+                    self.player1.mao_carta.append(carta1)
                     
-            elif numero_sorteado == 2:
-                 carta2 = CartaAtordoamento("Atordoamento", 6, "Atordoa toda energia do inimigo")
-                 self.player1.mao_carta.append(carta2)
-                
-            elif numero_sorteado == 3:
-                 carta3 = CartaCura("Cura dos anjos", 2, "Cura uma parte de sua vida")
-                 self.player1.mao_carta.append(carta3)
-                
-            elif numero_sorteado == 4:
-                carta4 = CartaDano("Dano", 1, "Causa dano baseado no ataque")
-                self.player1.mao_carta.append(carta4)
-                
-            elif numero_sorteado == 5:
-                 carta5 = CartaRoubo("Carta ladrona", 3, "Rouba uma carta aleatoria do inimigo")
-                 self.player1.mao_carta.append(carta5)
-            
-            
-        for i in range (4):
-
-            numero_sorteado2 = random.randint(1,5)
-
-            if numero_sorteado2 == 1:
-                carta6 = CartaAumento("Aumento", 2, "Aumenta algum atributo aleatório")
-                self.player2.mao_carta.append(carta6)
-                
+                        
+                elif numero_sorteado == 2:
+                    carta2 = CartaAtordoamento("Atordoamento", 6, "Atordoa toda energia do inimigo")
+                    self.player1.mao_carta.append(carta2)
                     
-            elif numero_sorteado2 == 2:
-                carta7 = CartaAtordoamento("Atordoamento", 6, "Atordoa toda energia do inimigo")
-                self.player2.mao_carta.append(carta7)
+                elif numero_sorteado == 3:
+                    carta3 = CartaCura("Cura dos anjos", 2, "Cura uma parte de sua vida")
+                    self.player1.mao_carta.append(carta3)
+                    
+                elif numero_sorteado == 4:
+                    carta4 = CartaDano("Dano", 1, "Causa dano baseado no ataque")
+                    self.player1.mao_carta.append(carta4)
+                    
+                elif numero_sorteado == 5:
+                    carta5 = CartaRoubo("Carta ladrona", 3, "Rouba uma carta aleatoria do inimigo")
+                    self.player1.mao_carta.append(carta5)
                 
-            elif numero_sorteado2 == 3:
-                carta8 = CartaCura("Cura dos anjos", 2, "Cura uma parte de sua vida")
-                self.player2.mao_carta.append(carta8)
                 
-            elif numero_sorteado2 == 4:
-                carta9 = CartaDano("Dano", 1, "Causa dano baseado no ataque")
-                self.player2.mao_carta.append(carta9)
-                
-            elif numero_sorteado2 == 5:
-                carta10 = CartaRoubo("Carta ladrona", 3, "Rouba uma carta aleatoria do inimigo")
-                self.player2.mao_carta.append(carta10)
-            
+            for i in range (4):
 
-        
+                numero_sorteado2 = random.randint(1,5)
+
+                if numero_sorteado2 == 1:
+                    carta6 = CartaAumento("Aumento", 2, "Aumenta algum atributo aleatório")
+                    self.player2.mao_carta.append(carta6)
+                    
+                        
+                elif numero_sorteado2 == 2:
+                    carta7 = CartaAtordoamento("Atordoamento", 6, "Atordoa toda energia do inimigo")
+                    self.player2.mao_carta.append(carta7)
+                    
+                elif numero_sorteado2 == 3:
+                    carta8 = CartaCura("Cura dos anjos", 2, "Cura uma parte de sua vida")
+                    self.player2.mao_carta.append(carta8)
+                    
+                elif numero_sorteado2 == 4:
+                    carta9 = CartaDano("Dano", 1, "Causa dano baseado no ataque")
+                    self.player2.mao_carta.append(carta9)
+                    
+                elif numero_sorteado2 == 5:
+                    carta10 = CartaRoubo("Carta ladrona", 3, "Rouba uma carta aleatoria do inimigo")
+                    self.player2.mao_carta.append(carta10)
+            
         
     def exibir_mao(self):
 
-        return print(f"\n\nCartas do jogador 1:\n\n{self.player1.mao_carta}\n\nCartas do jogador 2:\n\n {self.player2.mao_carta}\n\n")
+        return print(f"\n\nCartas do {self.player1.nome}(jogador 1):\n\n{self.player1.mao_carta}\n\nCartas do {self.player2.nome}(jogador 2):\n\n {self.player2.mao_carta}\n\n")
+    
+    def exibir_infos1(self):
+        print(f"           🌟{self.player1.nome}🌟         \n")
+        print(f"            Vida: {self.player1.vida_atual}/{self.player1.vida_maxima}")
+        print(f"            Escudo: {self.player1.pontos_defesa}")
+        print(f"            Ataque: {self.player1.pontos_ataque}")
+        print(f"            Energia: {self.player1.energia}/{self.player1.energia_maxima}\n\n")
+    
+    def exibir_infos2(self):
+        print(f"           🌟{self.player2.nome}🌟         \n")
+        print(f"            Vida: {self.player2.vida_atual}/{self.player2.vida_maxima}")
+        print(f"            Escudo: {self.player2.pontos_defesa}")
+        print(f"            Ataque: {self.player2.pontos_ataque}")
+        print(f"            Energia: {self.player2.energia}/{self.player2.energia_maxima}\n\n")
+        
+        
+    def rolar_partida(self):
+        print("Digite:\n1 - para usar carta\n2 - para comprar carta\n3 - para dançar")
+        opcao = input("opcao = ")
+        
+            
+    
+    
     
     
     
@@ -148,6 +172,8 @@ class CartaAumento (Carta):
             self.descricao = "Aumenta a sua defesa"
     
 
+
+
 class CartaRoubo (Carta):
     def __init__(self,nome: str,energia_gasta: int,descricao : str):
         super().__init__(nome,energia_gasta,descricao)
@@ -160,6 +186,8 @@ class CartaRoubo (Carta):
         
         return print ("Carta roubada com êxito")
 
+
+
 class CartaAtordoamento (Carta):
     def __init__(self,nome: str, energia_gasta: int, descricao: str):
         super().__init__(nome,energia_gasta,descricao)
@@ -169,6 +197,8 @@ class CartaAtordoamento (Carta):
         atordoante.energia -= atordoante.energia_maxima / 2
         
         return print ("Jogador atordoado com sucesso!")
+
+
 
 class CartaDano (Carta):
     def __init__(self, nome: str, energia_gasta: int, descricao: str):
@@ -187,21 +217,14 @@ class CartaDano (Carta):
             vitima.pontos_defesa -= causador.pontos_ataque
             
         causador.energia -= 1
+
+
     
 class CartaCura(Carta):
     def __init__(self, nome: str, energia_gasta: int, descricao: str):
         super().__init__(nome,energia_gasta,descricao)
         
     def usar (self, beneficiario: Personagem):
-        beneficiario.vida_atual += beneficiario.vida_maxima * 0.20
-         
-        
-
-        
-            
-            
-        
-        
-        
+        beneficiario.vida_atual += beneficiario.vida_maxima * 0.20       
         
         

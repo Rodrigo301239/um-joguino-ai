@@ -6,10 +6,10 @@ def jogar(pessoa1,pessoa2):
     Partida = classes.Partida(pessoa1,pessoa2)
     exibir = Partida.exibir()
     sorteio1 = Partida.sorteio_cartas()
-    #exibir1 = Partida.exibir_mao()
     sorteio2 = Partida.sorteio_cartas()
-    exibir2 = Partida.exibir_mao()
-    #mao_carta1 = classes.Personagem.construtor_maocarta()
+    exibir_mao = Partida.exibir_mao()
+    exibir_info1 = Partida.exibir_infos1()
+    exibir_info2 = Partida.exibir_infos2()
     
 
 
