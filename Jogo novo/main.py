@@ -1,4 +1,5 @@
 import classes
+import os
 
 
 def jogar(pessoa1,pessoa2):
@@ -8,8 +9,8 @@ def jogar(pessoa1,pessoa2):
     sorteio1 = Partida.sorteio_cartas()
     sorteio2 = Partida.sorteio_cartas()
     exibir_mao = Partida.exibir_mao()
-    exibir_info1 = Partida.exibir_infos1()
-    exibir_info2 = Partida.exibir_infos2()
+    #exibir_info1 = Partida.exibir_infos1()
+    #exibir_info2 = Partida.exibir_infos2()
     rolar_partida = Partida.rolar_partida()
     
 
@@ -31,6 +32,7 @@ if __name__ == "__main__":
     
     while True:
         if sorte1 > sorte2:
+            os.system("cls")
             print ("\n      O player 1 irá começar a partida        ")
             começar = jogar(jogador1,jogador2)
             break
