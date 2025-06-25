@@ -139,6 +139,12 @@ class Partida ():
         elif numero_sorteado == 5:
             carta5 = CartaRoubo("Carta ladrona", 3, "Rouba uma carta aleatoria do inimigo")
             self.player1.mao_carta.append(carta5)
+    
+    def construtor_de_cartas(self,carta):
+
+        if carta[1] == "Atordoamento":
+            CartaAtordoamento.usar(self.oponente,self.jogador_atual)
+
 
     def trocar_turno (self,numero):
         
@@ -152,37 +158,33 @@ class Partida ():
         
     def rolar_partida(self):
 
-        while True:
-            print("Digite:\n1 - para usar carta\n2 - para comprar carta\n3 - para dançar")
-            opcao = int(input("opcao = "))
-            carta_escolhida = self.jogador_atual.mao_carta[opcao]
+        
+        print("Digite:\n1 - para usar carta\n2 - para comprar carta\n3 - para dançar")
+        opcao = int(input("opcao = "))
 
-            if opcao == 1:    
-                 if self.jogador_atual.energia >= carta_escolhida.energia_gasta:
-                        if isinstance(carta_escolhida, CartaCura) or isinstance(carta_escolhida, CartaAumento):
-                            carta_escolhida.usar(self.jogador_atual)
-                        elif isinstance(carta_escolhida, CartaDano):
-                            carta_escolhida.usar(self.oponente,self.jogador_atual)
-                        elif isinstance(carta_escolhida, CartaRoubo):
-                            carta_escolhida.usar(self.jogador_atual,self.oponente)
-                        elif isinstance(carta_escolhida, CartaAtordoamento):
-                            carta_escolhida.usar(self.oponente, self.jogador_atual)
+        if opcao == 1:
+            for i in range(len(self.jogador_atual.mao_carta)):
+                print(f"{i+1} - {self.jogador_atual.mao_carta[i]}")
 
-                        else:
-                            print("Energia insuficiente para usar essa carta.")
+            indice = int(input("Número da carta que deseja usar: ")) - 1
 
-                        self.jogador_atual.mao_carta.remove(carta_escolhida)
-                        print("Carta usada com sucesso!")
             
-            elif opcao == 2:
-                self.sortear_uma_carta()
-                print(f"{self.jogador_atual.mao_carta}")
-                break
-            else:
-                print("\n\nvoce dançou\n\n")
-                break
+            carta_escolhida = self.jogador_atual.mao_carta[indice]
+            carta_escolhida.usar(self.jogador_atual, self.oponente)
+            print(f"Você escolheu: {carta_escolhida}")
+            
+            
+                      
+            
+            # elif opcao == 2:
+            #     self.sortear_uma_carta()
+            #     print(f"{self.jogador_atual.mao_carta}")
+            #     break
+            # else:
+            #     print("\n\nvoce dançou\n\n")
+            #     break
                 
-            self.exibir_infos2()
+            # self.exibir_infos2()
         
         
             
@@ -270,7 +272,7 @@ class CartaAtordoamento (Carta):
         
     def usar(self, atordoado : Personagem, atordoante : Personagem):
         atordoado.energia = 0
-        atordoante.energia -= atordoante.energia_maxima / 2
+        #atordoante.energia -= atordoante.energia_maxima / 2
         
         return print ("Jogador atordoado com sucesso!")
 
