@@ -204,6 +204,9 @@ class Partida ():
             elif opcao == 3:
                 print ("\n\n\n\nDANCANDO\n\n\n")
                 print (f"{self.jogador_atual.nome} dançou\n\n")
+        
+        if self.jogador_atual.vida_atual <= 0 or self.oponente.vida_atual <= 0:
+            print ("\n\n\n\n\n GAME OVER")
                 
         if atordoado == 1:
             self.oponente.energia = 0
@@ -360,8 +363,6 @@ class CartaEscudoDivino (Carta):
     def usar (self, beneficiario: Personagem,oponente: Personagem):
         beneficiario.pontos_defesa += 50
         beneficiario.energia -= 1
-
-class 
         
 
 
