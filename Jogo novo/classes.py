@@ -186,6 +186,7 @@ class Partida ():
                     print(f"{i+1} - {self.jogador_atual.mao_carta[i]}")
 
                 indice = int(input("Número da carta que deseja usar: ")) - 1
+                os.system("cls")
 
                 
                 carta_escolhida = self.jogador_atual.mao_carta[indice]
@@ -200,8 +201,10 @@ class Partida ():
             elif opcao == 2:
                  self.sortear_uma_carta()
                  print("CARTA COMPRADA COM SUCESSO")
+                 os.system("cls")
             
             elif opcao == 3:
+                os.system("cls")
                 print ("\n\n\n\nDANCANDO\n\n\n")
                 print (f"{self.jogador_atual.nome} dançou\n\n")
         

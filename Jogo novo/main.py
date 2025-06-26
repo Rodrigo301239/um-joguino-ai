@@ -8,7 +8,7 @@ def jogar(pessoa1,pessoa2):
     #exibir = Partida.exibir()
     sorteio1 = Partida.sorteio_cartas()
     sorteio2 = Partida.sorteio_cartas()
-    exibir_mao = Partida.exibir_mao()
+    #exibir_mao = Partida.exibir_mao()
     #exibir_info1 = Partida.exibir_infos1()
     #exibir_info2 = Partida.exibir_infos2()
     rolar_partida = Partida.rolar_partida()
